@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+    <style>
+
+        .main {
+            height: calc(100vh - 140px);
+            padding-top: 40px;
+        }
+
+        .logo {
+            font-weight: bold;
+            color: white;
+        }
+    </style>
+    @RenderSection("styles", false)
+
+</head>
+<body>
+    <nav class="navbar navbar-light bg-gradient navbar-expand-md  shadow-sm">
+        <div class="container-fluid">
+            <span class="navbar-brand logo font-monospace text-white">Janata<sup>BANK</sup></span>
+            <div class="navbar-collapse collapse">
+                <ul class="navbar-nav nav ms-auto">
+                    <li class="nav-item">
+                        @Html.ActionLink("Home", "Index", "Home", new { }, new { @class = "nav-link text-white" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Banks", "Index", "Banks", new { }, new { @class = "nav-link text-white" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Employees", "Index", "Employees", new { }, new { @class = "nav-link text-white" })
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="container-fluid main">
+        @RenderBody()
+    </section>
+    <footer class="container-fluid">
+        <span style="color:white;"> &copy; <b> Anika Arabi </b> </span>
+    </footer>
+    @RenderSection("scripts", false)
+</body>
+</html>

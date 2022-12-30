@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BankApplication.Models.Employee>
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<style>
+    body {
+        background-color: CadetBlue;
+    }
+</style>
+<div class="row">
+    <div class="col-12">
+        <h3 class="d-flex justify-content-center" style="background-color: white">Employees</h3>
+        <div class="d-flex justify-content-end mb-1">
+            @Html.ActionLink("Add New", "Create", "Employees", new { }, new { @class = "btn btn-primary btn-sm" })
+        </div>
+        <table class="table table-bordered">
+            <thead class="bg-light">
+                <tr>
+                    <th></th>
+                    <th>@Html.DisplayNameFor(x => x.EmployeeName)</th>
+                    <th>@Html.DisplayNameFor(x => x.Email)</th>
+                    <th>@Html.DisplayNameFor(x => x.Bank.BankName)</th>
+                    <th>@Html.DisplayNameFor(x => x.StratDate)</th>
+                    <th>@Html.DisplayNameFor(x => x.EndDate)</th>
+                    <th>@Html.DisplayNameFor(x => x.IsWorking)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var e in Model)
+                {
+                    <tr>
+                        <td><img src="~/Pictures/@e.Picture" style="width:60px" /></td>
+                        <td>@Html.DisplayFor(x => e.EmployeeName)</td>
+                        <td>@Html.DisplayFor(x => e.Email)</td>
+                        <td>@Html.DisplayFor(x => e.Bank.BankName)</td>
+                        <td>@Html.DisplayFor(x => e.StratDate)</td>
+                        <td>@Html.DisplayFor(x => e.EndDate)</td>
+                        <td>@Html.DisplayFor(x => e.IsWorking)</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", "Employees", new { id = e.EmployeeId }, new { @class = "btn btn-secondary btn-sm" })
+                            <a href="@Url.Action("Delete", "Employees", new {id=e.EmployeeId})" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

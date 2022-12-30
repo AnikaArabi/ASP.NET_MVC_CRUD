@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BankApplication.Models.Bank>
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<style>
+    body {
+        background-color: CadetBlue;
+    }
+</style>
+<div class="row">
+    <div class="col-12">
+        <h3 class="d-flex justify-content-center" style="background-color: white;">Banks</h3>
+        <div class="d-flex justify-content-end mb-1">
+            @Html.ActionLink("Add New", "Create", "Banks", new { }, new { @class = "btn btn-primary btn-sm" })
+        </div>
+        <table class="table table-bordered">
+            <thead class="bg-light">
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.BankName)</th>
+                    <th>@Html.DisplayNameFor(x => x.Branch)</th>
+                    <th>@Html.DisplayNameFor(x => x.EstablishDate)</th>
+                    <th>@Html.DisplayNameFor(x => x.ContactNumber)</th>
+                    <th>@Html.DisplayNameFor(x => x.RoutingNumber)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var b in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => b.BankName)</td>
+                        <td>@Html.DisplayFor(x => b.Branch)</td>
+                        <td>@Html.DisplayFor(x => b.EstablishDate)</td>
+                        <td>@Html.DisplayFor(x => b.ContactNumber)</td>
+                        <td>@Html.DisplayFor(x => b.RoutingNumber)</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", "Banks", new { id = b.BankId }, new { @class = "btn btn-secondary btn-sm" })
+                            <a href="@Url.Action("Delete", "Banks", new {id=b.BankId})" class="btn btn-danger btn-sm @(b.Employees.Count > 0 ? "disabled" :"")">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

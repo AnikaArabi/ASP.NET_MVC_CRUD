@@ -1,0 +1,69 @@
+﻿@model BankApplication.Models.Bank
+@{
+    ViewBag.Title = "Delete";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<style>
+    body {
+        background-color: CadetBlue;
+    }
+</style>
+<div class="row">
+    <div class="col-12">
+        <h3 class="offset-3 mb-4 text-white">Are you sure to delete??</h3>
+    </div>
+    <div class="col-12">
+        <div class="form-group row mb-2 offset-1">
+            @Html.LabelFor(x => x.BankName, new { @class = "col-form-label col-form-label-sm col-2" })
+            <div class="col-4">
+                @Html.DisplayFor(x => x.BankName)
+
+            </div>
+        </div>
+        <div class="form-group row mb-2 offset-1">
+            @Html.LabelFor(x => x.Branch, new { @class = "col-form-label col-form-label-sm col-2" })
+            <div class="col-4">
+                @Html.DisplayFor(x => x.Branch)
+
+            </div>
+        </div>
+        <div class="form-group row mb-2 offset-1">
+            @Html.LabelFor(x => x.EstablishDate, new { @class = "col-form-label col-form-label-sm col-2" })
+            <div class="col-4">
+                @Html.DisplayFor(x => x.EstablishDate)
+
+            </div>
+        </div>
+        <div class="form-group row mb-2 offset-1">
+            @Html.LabelFor(x => x.ContactNumber, new { @class = "col-form-label col-form-label-sm col-2" })
+            <div class="col-4">
+                @Html.DisplayFor(x => x.ContactNumber)
+
+            </div>
+        </div>
+        <div class="form-group row mb-2 offset-1">
+            @Html.LabelFor(x => x.RoutingNumber, new { @class = "col-form-label col-form-label-sm col-2" })
+            <div class="col-4">
+                @Html.DisplayFor(x => x.RoutingNumber)
+
+            </div>
+        </div>
+        <div class="form-group row mb-2 offset-1">
+            <div class="col-2">
+                @Html.ActionLink("Back", "Index", new { }, new { @class = "btn btn-primary" })
+            </div>
+            <div class="col-4">
+                @using (Html.BeginForm())
+                {
+                    @Html.HiddenFor(x => x.BankId)
+                    <div class="col-4 offset-2">
+                        <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                    </div>
+                }
+            </div>
+
+        </div>
+
+        
+</div>
+
